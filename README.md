@@ -45,10 +45,27 @@ pip install -r requirements.txt
 - Follow the step-by-step instructions for investigating and responding to incidents.
 
 ### **2. Running the Log Parser**
+
+The `log_parser.py` script allows you to scan log files for suspicious patterns. It supports three modes:
+
+- **basic**: Detects failed login attempts, invalid users, and other basic suspicious activities.
+- **privilege**: Looks for privilege escalation attempts, such as users added to sudo or admin groups.
+- **advanced**: Detects advanced attack techniques like reverse shells, obfuscated PowerShell, suspicious downloads, etc.
+
+**Example Usage:**
+
 ```bash
-python scripts/log_parser.py samples/malware_log_sample.log
+# Basic mode
+python scripts/log_parser.py --mode basic samples/sample_log.txt
+
+# Privilege mode
+python scripts/log_parser.py --mode privilege samples/sample_log.txt
+
+# Advanced mode
+python scripts/log_parser.py --mode advanced samples/sample_log.txt
 ```
-- This script scans system logs for suspicious activity, such as failed login attempts or malware execution.
+
+You can customize the regex patterns in `log_parser.py` to fit your environment.
 
 ### **3. Phishing Email Analysis**
 ```bash
